@@ -1,35 +1,27 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
-namespace EmployeesCh12.Models
+namespace EmployeesCh12.Models;
+
+public partial class Employee
 {
-    public class Employee
-    {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Display(Name = "Number")]
-        public int ID { get; set; }
+    public int Id { get; set; }
 
-        [Display(Name = "First Name")]
-        [StringLength(50, MinimumLength = 2)]
-        public string FirstName { get; set; } = string.Empty;
+    public string? FirstName { get; set; }
 
-        [Display(Name = "Last Name")]
-        [StringLength(50, MinimumLength = 3)]
-        public string LastName { get; set; } = string.Empty;
+    public string LastName { get; set; } = null!;
 
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Hire Date")]
-        public DateTime? HireDate { get; set; }
+    public string? Address { get; set; }
 
-        //Foreign keys
-        public int? DepartmentID {  get; set; }
-        public int? BenefitsID { get; set; }
+    public string? Zip { get; set; }
 
-        //Nav Properties
-        public Department? Department { get; set; } = null;
-        public Benefits? Benefits { get; set; } = null;
-    }
+    public string? Position { get; set; }
+
+    public int? DepartmentId { get; set; }
+
+    public decimal? Salary { get; set; }
+
+    public virtual Department? Department { get; set; }
+
+    public virtual Zipcode? ZipNavigation { get; set; }
 }

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace EmployeesCh12.Models;
 
-public partial class Department
+public partial class Zipcode
 {
-    public int Id { get; set; }
+    public string Zipcode1 { get; set; } = null!;
 
-    public string? Name { get; set; }
+    public string City { get; set; } = null!;
 
-    public string? Location { get; set; }
+    public string State { get; set; } = null!;
 
     public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
 }
